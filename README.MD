@@ -1,6 +1,6 @@
 # Django Krogoth
 
-![alt text](https://raw.githubusercontent.com/MattAndrzejczuk/Django-Krogoth/master/core_krogoth.jpg)
+![alt text](https://raw.githubusercontent.com/MattA9K/Django-Krogoth/master/core_krogoth.jpg)
 
 Start development of a single page web application within 20 minutes or less. Edit your web app straight from the Django Admin panel, or via the custom IDE. Save your changes and test within seconds (get rid of that `clear browser cache` addon).
 
