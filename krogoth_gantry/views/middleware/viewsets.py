@@ -13,7 +13,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 class KrogothGantryMasterViewControllerViewSet(viewsets.ModelViewSet):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAdminUser,)
     queryset = KrogothGantryMasterViewController.objects.all().order_by('name')
     serializer_class = KrogothGantryMasterViewControllerSerializer
     filter_backends = [DjangoFilterBackend]
