@@ -15,7 +15,7 @@
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: '/krogoth_examples/generic/contact/list/'
+                url: '/krogoth_examples/contact/list/'
             }).then(function successCallback(response) {
                 /// Success
                 deferred.resolve(response.data);
