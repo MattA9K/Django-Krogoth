@@ -8,16 +8,19 @@ from krogoth_gantry.functions.edit_mvc import KrogothGantryMasterViewControllerS
     KrogothGantryDirectiveSerializer, KrogothGantryServiceSerializer, \
     KrogothGantrySlaveViewController
 from rest_framework import viewsets
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 class KrogothGantryMasterViewControllerViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (AllowAny,)
     queryset = KrogothGantryMasterViewController.objects.all().order_by('name')
     serializer_class = KrogothGantryMasterViewControllerSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ('name', 'category', 'id')
+    filter_fields = ('category')
+    # TODO: The fucking filter is deprecated and useless
+#     filterset_fields = ('category')
+
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

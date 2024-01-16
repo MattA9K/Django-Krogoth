@@ -22,4 +22,4 @@ def change_code_gracefull_reload(sig):
 
 
 application = get_wsgi_application()
-autoreload_started.connect(my_watchdog)
+# autoreload_started.connect(my_watchdog)

@@ -84,9 +84,13 @@ def load_core_elements_css():
 
 
 def index(request):
+    print("🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎")
     permission_classes = (AllowAny,)
-    template = loader.get_template('index_alt.html')
-    splash_title = 'Krogoth'
+    
+#     template = loader.get_template('index_alt.html')
+    template = loader.get_template('coming_soon.html')
+    
+    splash_title = 'MattA9K'
     font_size = 36
     splash_logo_bg_color = 'antiquewhite'
     width = 250
@@ -97,8 +101,15 @@ def index(request):
         usr = 'ANONYMOUS'
         if request.user: usr = request.user.username
         count_this = DataVisitorTracking()
-        try: count_this.remote_addr = request.META['REMOTE_ADDR']
-        except: pass  # no value for key=[QUERY_STRING]
+        try: 
+            count_this.remote_addr = request.META['REMOTE_ADDR']
+            if "67.165.25.161" == str(count_this.remote_addr):
+                template = loader.get_template('index_alt.html')
+            else:
+                template = loader.get_template('coming_soon.html')
+            print("🫐 🫐 🫐 🫐 🫐" + str(count_this.remote_addr) + "🫐 🫐 🫐 🫐 🫐 ")
+        except: 
+            pass  # no value for key=[QUERY_STRING]
         try: count_this.remote_port = request.META['REMOTE_PORT']
         except: pass  # no value for key=[QUERY_STRING]
         try: count_this.http_user_agent = request.META['HTTP_USER_AGENT']
