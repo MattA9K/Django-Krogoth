@@ -196,7 +196,7 @@ class InstallationRuntime:
 
         DOCKER_SQL_NAME = "armprime-postgres"
         SQL_USER = "jawn"
-        SQL_PASS = "xzxzf87d93a3f325574900aa2f5626e3844a903ffb64bed152ae124d2e79xzxz"
+        SQL_PASS = "xzxzf87d93a3f32551927489028495710693217ffb64bed152ae124d2e79xzxz"
         SQL_PUBLIC_PORT = "8091"
         SQL_PRIVATE_PORT = "5432"
         SQL_ARGS = "-e POSTGRES_USER=" + \
@@ -216,7 +216,7 @@ class InstallationRuntime:
                    '-e',
                    'POSTGRES_USER=jawn',
                    '-e',
-                   'POSTGRES_PASSWORD=xzxzf87d93a3f325574900aa2f5626e3844a903ffb64bed152ae124d2e79xzxz',
+                   'POSTGRES_PASSWORD=xzxzf87d93a3f32551927489028495710693217ffb64bed152ae124d2e79xzxz',
                    '-d',
                    '-p',
                    '8091:5432',
@@ -224,7 +224,7 @@ class InstallationRuntime:
 
         cmd_n03 = ['docker', 'run', '-d', '-p', '7070:6379', '--name=armprime-redis', 'redis']
         pp = PARENT_DIRPATH + ':/usr/src/app/'
-        cmd_n04 = ['docker', 'run', '-d', '-p', '80:80', '-v', pp, '--link', 'armprime-postgres:postgres', '--link',
+        cmd_n04 = ['docker', 'run', '-d', '--expose=443', '-p', '80:80', '-p', '443:443', '-v', pp, '--link', 'armprime-postgres:postgres', '--link',
                    'armprime-redis:redis', '--name=armprime', 'mattjawn/armprime']
         cmd_n05 = ['docker', 'exec', 'armprime-redis', 'redis-cli', 'config', 'set', 'notify-keyspace-events', 'KEA']
         cmd_n06 = ['docker', 'exec', '-it', 'armprime-postgres', 'useradd', '-p', '$(openssl passwd -1 123123)', 'jawn']

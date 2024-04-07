@@ -82,3 +82,13 @@ Then, navigate to `http://SERVER_HOSTNAME/#!/UltraEditorBrowse`
 Click on `Primary`, `Required`, then finally `home`.
 
 You should now be in the built-in IDE editor. from here, you can make changes to the AngularJS home page.
+
+### Use Your Own IDE
+The IDE built into Krogoth is not supposed to replace your favorite IDE you are accustomed to, it is meant to speed up your web app development process. Navigate to `static/web/app/CATEGORY/SUBCATEGORY/KAPP` to make changes to your frontend code.
+Once you are finished making changes, run this command to copy your code into the database.
+Krogoth HTML, JS and CSS code is served from the local PostgreSQL database.
+Everytime you make changes to code in `static/web/app/CATEGORY/SUBCATEGORY/KAPP`, you need to publish your new frontend code so that it goes live by using the following command:
+
+```bash
+# ./manage.py collectdvc
+```

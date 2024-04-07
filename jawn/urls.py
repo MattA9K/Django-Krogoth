@@ -19,6 +19,7 @@ router.register(r'jawn-users', JawnUserViewSet, 'Jawn User')
 
 
 urlpatterns = [
+    path('kapp_notes/', include('kapp_notes.urls')),
     # Example Stuff
     path('krogoth_examples/', include('krogoth_gantry.routes.urls_krogoth_examples')),
     # path('generic/', include('krogoth_gantry.routes.urls_krogoth_examples')),

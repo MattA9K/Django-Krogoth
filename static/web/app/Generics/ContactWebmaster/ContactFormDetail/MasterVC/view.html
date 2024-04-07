@@ -1,44 +1,44 @@
 <h1>{{ vm.viewName }}</h1>
 
 <div layout="row">
-    <div flex="10"></div>
-    <div flex style="background-color:white;" md-whiteframe>
-        
-        
-        <div layout="column" layout-padding ng-if="!vm.notFound">
-            
-            <div>
-                <span class="md-display-1">{{vm.viewData.title}}</span>
-            </div>
-            <div>
-                <small>Sent from {{vm.viewData.sender}} on {{vm.viewData.pub_date | date:"MM/dd/yyyy 'at' h:mma"}}</small>
-            </div>
-            <div>
-                <pre>
+  <div flex="10"></div>
+  <div flex style="background-color:white;" md-whiteframe>
+
+
+    <div layout="column" layout-padding ng-if="!vm.notFound">
+
+      <div>
+        <span class="md-display-1">{{vm.viewData.title}}</span>
+      </div>
+      <div>
+        <small>Sent from {{vm.viewData.sender}} on {{vm.viewData.pub_date | date:"MM/dd/yyyy 'at' h:mma"}}</small>
+      </div>
+      <div>
+        <pre>
             		{{vm.viewData.body}}
             	</pre>
-            </div>
-            
-        </div>
-        
-        <div>
-            <div ng-if="!vm.infoBox">
-            	<md-button class="md-warn" ng-click="vm.deleteThis()">Archive Message</md-button>
-            </div>
-            <div ng-if="vm.infoBox" class="background-color:rgba(255,255,0,0.3);color:rgba(55,55,0,0.95)">
-            	<span class="md-subhead">{{ vm.infoBox }}</span>
-            </div>
-        </div>
-        
-        <!-- 404 CONTACT FORM WITH ID NOT FOUND -->
-        <div layout="column" layout-padding ng-if="vm.notFound">
-            <h1>
-                <pre>{{vm.notFound}}</pre>
-            </h1>
-            <div>
-                contactFormId: <pre>{{vm.contactFormId}}</pre>
-            </div>
-        </div>
+      </div>
+
     </div>
-    <div flex="10"></div>
+
+    <div>
+      <div ng-if="!vm.infoBox">
+        <md-button class="md-warn" ng-click="vm.deleteThis()">Archive Message</md-button>
+      </div>
+      <div ng-if="vm.infoBox" class="background-color:rgba(255,255,0,0.3);color:rgba(55,55,0,0.95)">
+        <span class="md-subhead">{{ vm.infoBox }}</span>
+      </div>
+    </div>
+
+    <!-- 404 CONTACT FORM WITH ID NOT FOUND -->
+    <div layout="column" layout-padding ng-if="vm.notFound">
+      <h1>
+        <pre>{{vm.notFound}}</pre>
+      </h1>
+      <div>
+        contactFormId: <pre>{{vm.contactFormId}}</pre>
+      </div>
+    </div>      
+  </div>
+  <div flex="10"></div>
 </div>
