@@ -1,6 +1,6 @@
 __version__ = '0.9.53'
 __author__ = 'Matt Andrzejczuk'
-
+import random
 from django.db import models
 from krogoth_gantry.models.models_chat import JawnUser
 from polymorphic.models import PolymorphicModel
@@ -69,7 +69,7 @@ class AKThreadSocialMedia(AKThread):
     likes = models.IntegerField(default=0)
 
 class ForumThreadCategory(models.Model):
-    uid = models.CharField(max_length=249, primary_key=True)
+    uid = models.CharField(max_length=249, primary_key=True, default='NO_UID_GIVEN')
     title = models.CharField(max_length=248, default='new category')
     description = models.CharField(max_length=248, default='No description.')
     total_threads = models.IntegerField(default=0)
@@ -78,7 +78,7 @@ class ForumThreadCategory(models.Model):
 
 
 class ForumThreadOP(models.Model):
-    uid = models.CharField(max_length=249, primary_key=True)
+    uid = models.CharField(max_length=249, primary_key=True, default="" + str(random.randint(1, 9000000000000)))
     title = models.CharField(max_length=257, default='new post')
     author = models.ForeignKey(JawnUser, on_delete=models.CASCADE, null=True, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
