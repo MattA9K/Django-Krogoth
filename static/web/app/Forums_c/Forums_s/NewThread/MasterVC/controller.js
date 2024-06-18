@@ -13,6 +13,7 @@
     vm.category = "";
 
     vm.errorToast = errorToast;
+    vm.didPressGoBack = didPressGoBack;
 
     function onInit() {
       vm.viewDidLoad();
