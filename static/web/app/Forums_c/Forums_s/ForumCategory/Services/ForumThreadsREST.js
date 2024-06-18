@@ -16,7 +16,7 @@
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: '/krogoth_social/api/ForumThreadOP/?format=json&category=' + catId
+                url: '/krogoth_examples/forum_viewsets/ForumThreadOP/?format=json&category=' + catId
             }).then(function successCallback(response) {
                 /// Success
                 deferred.resolve(response.data);

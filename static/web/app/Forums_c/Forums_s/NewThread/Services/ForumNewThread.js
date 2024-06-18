@@ -25,7 +25,7 @@
             */
 
             if (title !== "REPLY") {
-                const uri = '/krogoth_social/api/ForumThreadOP/'
+                const uri = '/krogoth_examples/forum_viewsets/ForumThreadOP/'
                 const payload = {
                     "category": category,
                     "title": title,
