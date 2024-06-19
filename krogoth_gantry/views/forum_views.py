@@ -32,8 +32,10 @@ class ForumThreadReplyViewSet(viewsets.ModelViewSet):
     queryset = ForumThreadReply.objects.all()
     serializer_class = ForumThreadReplySerializer
     permission_classes = (IsAuthenticated,)
-    filter_backends = [DjangoFilterBackend]
-    filter_fields = ('author', 'parent',)
+    # filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['author', 'parent',]
+    # filter_fields = ('author', 'parent',)
 
 
 class AKThreadCategoryViewSet(viewsets.ModelViewSet):

@@ -42,7 +42,7 @@ class ForumThreadOPSerializer(serializers.ModelSerializer):
         validated_data['pub_date'] = datetime.now()
         validated_data['author'] = JawnUser.objects.get(id=self.context['request'].user.id)
         cat = ForumThreadCategory.objects.get(uid=validated_data['category'].uid)
-        post_no = len(ForumThreadOP.objects.all())
+        post_no = len(ForumThreadOP.objects.all()) + len(ForumThreadReply.objects.all())
         cat.total_threads += 1
         cat.save()
         validated_data['uid'] = str(post_no)
