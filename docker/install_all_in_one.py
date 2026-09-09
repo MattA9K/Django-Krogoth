@@ -273,8 +273,11 @@ class InstallationRuntime:
 
 
         # wait = input('ready?')
-
+        
         dexec = ['docker', 'exec', '-it', 'armprime', 'pip3', 'install', '-r', 'requirements.txt']
+        
+        dexec2 = ['docker', 'exec', '-it', 'armprime', 'pip3', 'install', 'psycopg2-binary']
+        dexec3 = ['docker', 'exec', '-it', 'armprime', 'pip3', 'install', 'requests-oauthlib']
 
         installer.destroy_docker()
         AKInstallation.execute_realtime_out(cmd_n01, 1)
@@ -297,11 +300,13 @@ class InstallationRuntime:
         # AKInstallation.execute_realtime_out(cmd_n15, -1)
         # AKInstallation.execute_realtime_out(cmd_n16, -1)
         AKInstallation.execute_realtime_out(dexec, 16)
+        AKInstallation.execute_realtime_out(dexec2, 17)
+        AKInstallation.execute_realtime_out(dexec3, 18)
         ### ---====== make new migrations ======---
-        AKInstallation.execute_realtime_out(cmd_n18, 17)
-        AKInstallation.execute_realtime_out(cmd_n19, 18)
+        AKInstallation.execute_realtime_out(cmd_n18, 19)
+        AKInstallation.execute_realtime_out(cmd_n19, 20)
         ### ---====== install krogoth gantry units ======---
-        AKInstallation.execute_realtime_out(cmd_n21, 19)
+        AKInstallation.execute_realtime_out(cmd_n21, 21)
         AKInstallation.execute_realtime_out(ak_install, 100)
         AKInstallation.execute_realtime_out(static_col, 101)
 
