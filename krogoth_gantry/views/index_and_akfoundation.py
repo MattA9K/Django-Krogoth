@@ -87,8 +87,8 @@ def index(request):
     print("🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎")
     permission_classes = (AllowAny,)
     
-#     template = loader.get_template('index_alt.html')
-    template = loader.get_template('coming_soon.html')
+    template = loader.get_template('index_alt.html')
+    # template = loader.get_template('coming_soon.html')
     
     splash_title = 'MattA9K'
     font_size = 36
@@ -106,7 +106,7 @@ def index(request):
             if "67.165.25.161" == str(count_this.remote_addr):
                 template = loader.get_template('index_alt.html')
             else:
-                template = loader.get_template('coming_soon.html')
+                template = loader.get_template('index_alt.html')
             print("🫐 🫐 🫐 🫐 🫐" + str(count_this.remote_addr) + "🫐 🫐 🫐 🫐 🫐 ")
         except: 
             pass  # no value for key=[QUERY_STRING]
