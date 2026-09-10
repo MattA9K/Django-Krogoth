@@ -17,9 +17,8 @@ class KrogothGantryMasterViewControllerViewSet(viewsets.ModelViewSet):
     queryset = KrogothGantryMasterViewController.objects.all().order_by('name')
     serializer_class = KrogothGantryMasterViewControllerSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ('category')
-    # TODO: The fucking filter is deprecated and useless
-#     filterset_fields = ('category')
+    filter_fields = ('category',)
+    filterset_fields = ('category',)
 
 
 
