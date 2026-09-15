@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '-ic*v=-p%!6#0ki%kj2l&@4e_a_j!7xm7g9wmxu%8f$9xj*2ht'
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
@@ -42,13 +42,15 @@ except:
     SESSION_REDIS_HOST = '172.17.0.3'
     SESSION_REDIS_PORT = '6379'
     POSTGRES_ENV_POSTGRES_USER = 'jawn'
-    POSTGRES_ENV_POSTGRES_PASSWORD = 'xzxzf87d93a3f325574900aa2f5626e3844a903ffb64bed152ae124d2e79xzxz'
+    POSTGRES_ENV_POSTGRES_PASSWORD = 'gFmMlyGgINNd4mUKfJvyIQjmpL0K4572lvqhalkuC4WyZ8vUqCASS'
     POSTGRES_PORT_5432_TCP_ADDR = '172.17.0.2'
     POSTGRES_PORT_5432_TCP_PORT = '5432'
 
 # App will serve frontend from '/static/compiled' rather than slowly generating
 # frontend code dynamically. Use True for production.
-STATIC_KROGOTH_MODE = False
+STATIC_KROGOTH_MODE = True
+# RESTART UWSGI TO SEE COMPILED CHANGES:
+# docker exec armprime supervisorctl restart app-uwsgi
 
 # Application definition
 REST_FRAMEWORK = {
