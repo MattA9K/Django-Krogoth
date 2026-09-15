@@ -13,7 +13,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 from django.template import loader
 from django.http import HttpResponse
-from jawn.settings import STATIC_KROGOTH_MODE  # , APP_VERSION
+from jawn.settings import STATIC_KROGOTH_MODE, BASE_DIR  # , APP_VERSION
+from krogoth_gantry.krogoth_static_frontend import frontend_urls
 from django.template import Context, Template
 
 # from krogoth_gantry.views.middleware.dj_tmpl_rendered import load_custom_css, load_krogoth_css, load_background_css, \
@@ -154,15 +155,23 @@ def index(request):
                               inspect.getframeinfo(inspect.stack()[1][0]))
 
     KrogothGantryMasterViewControllers = []
+    all_applications = KrogothGantryMasterViewController.objects.filter(is_enabled=True)
     if STATIC_KROGOTH_MODE == False:
-        all_applications = KrogothGantryMasterViewController.objects.filter(is_enabled=True)
         for application in all_applications:
             KrogothGantryMasterViewControllers.append(
                 '/krogoth_gantry/DynamicJavaScriptInjector/?name=' + application.name)
     else:
-        all_applications = os.listdir('static/compiled')
+        # Named per enabled MVC rather than listdir so a stale or missing
+        # static/compiled/ cannot inject dead <script> tags or 500 the page.
         for application in all_applications:
-            KrogothGantryMasterViewControllers.append('/static/compiled/' + application)
+            compiled = os.path.join(BASE_DIR, 'static', 'compiled', application.name + '.js')
+            if os.path.isfile(compiled):
+                KrogothGantryMasterViewControllers.append('/static/compiled/' + application.name + '.js')
+            else:
+                DataServerEvents.warn(
+                    'STATIC_KROGOTH_MODE is on but static/compiled/%s.js is missing. '
+                    'Run ./manage.py compilekrogoth' % application.name,
+                    inspect.getframeinfo(inspect.stack()[0][0]))
     version_build = 'Krogoth v1.0.02'
     seo_title = "Krogoth "
     seo_description = 'description'
@@ -194,4 +203,5 @@ def index(request):
         "main_bg_color": main_bg_color,
         "font_color": font_color,
     }
+    context.update(frontend_urls(STATIC_KROGOTH_MODE))
     return HttpResponse(template.render(context, request))

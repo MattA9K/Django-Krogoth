@@ -129,6 +129,7 @@ BGWARN = '\033[43m'
 # from krogoth_gantry.models.gantry_models import KrogothGantryMasterViewController, AKFoundationAbstract
 
 from krogoth_gantry.models import KrogothGantryMasterViewController, AKFoundationAbstract
+from krogoth_gantry.krogoth_static_frontend import render_document, enabled_master_names
 
 @api_view(['GET'])
 def load_static_text_readonly(request, filename):
@@ -148,15 +149,8 @@ def load_static_text_readonly(request, filename):
     if document_sql is None:
         return Response('404 KGI NOT FOUND', content_type='text/html', status=404)
 
-    injection = "console.log('DEPENDENCY CALLED: " + filename + "');var vm = this"
-    body = document_sql.content.replace("var vm = this", injection)
-
-    if filename == 'index.module.js':
-        all_djangular = KrogothGantryMasterViewController.objects.filter(is_enabled=True)
-        my_apps = ''
-        for application in all_djangular:
-            my_apps += ("\t\t\t'app." + application.name + "',\n")
-        body = body.replace('/*|#apps#|*/', my_apps)
+    body = render_document(document_sql, filename,
+                           enabled_master_names=enabled_master_names())
 
     print(OKBLUE + "filename : " + OKGREEN + filename + ENDC)
     mime = document_sql.file_kind

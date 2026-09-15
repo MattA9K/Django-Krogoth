@@ -4,37 +4,53 @@
 <head>
     <base href="/"/>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="/global_static_text/load_static_text_readonly/LoadingScreen.css"/>
+    <link rel="stylesheet" href="{{ krogoth_loading_style }}"/>
 
-    <meta name="description"
-          content="{{ description }}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.00"/>
-    <link rel="shortcut icon" type="image/jpg" href="/static/favicon.ico"/>
+    <title id="browser_tab_text">StarNexa</title>
+    <meta id="krogoth_gantryMetaImage_01" name="twitter:image:src" content="/static/logoStarNexaSmol.png"/>
+    <meta id="krogoth_gantryMetaImage_02" content="/static/logoStarNexaSmol.png"/>
 
-    <title id="browser_tab_text">{{ message }}</title>
-    <meta id="krogoth_gantryMetaImage_01" name="twitter:image:src" content="/static/ArmLogoVector.svg"/>
-    <meta id="krogoth_gantryMetaImage_02" content="/static/CoreLogoVector.svg"/>
 
-    <!--<meta name="twitter:image:alt" content="{{ splash_title }}"/>-->
-    <meta name="twitter:image:alt" content="/static/ArmLogoVectorWhite.svg"/>
-    <meta property="og:site_name" content="Powered by Django Krogoth"/>
-    <meta property="og:locale" content="en_US"/>
 
-    <meta name="msvalidate.01" content="886E5F10D7612105B6C98936B33E1D24"/>
-    <meta name="google-site-verification" content="MF6sr36SRcMLLyvQra1-xXWDxWQSut4shwf-pCigTSg"/>
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107036799-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments)
-        }
+<meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.00"/>
+<link rel="shortcut icon" type="image/jpg" href="/static/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/static/logoStarNexaSmol.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+<meta charset="utf-8">
+<title>StarNexa — iOS space exploration game</title>
+<meta name="description" content="StarNexa is an iPhone and iPad space game. Leave Sol in a Terran corvette, plot a course through a generated galaxy, fight in real time, and outfit the ship with whatever you haul back. The dead do not return.">
+<link rel="canonical" href="https://starnexa.net/">
 
-        gtag('js', new Date());
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="StarNexa">
+<meta property="og:title" content="StarNexa — iOS space exploration game">
+<meta property="og:description" content="Leave Sol in a starship. Every system can hide loot, a quiet planet, or a fleet that has not decided if you are a guest.">
+<meta property="og:url" content="https://starnexa.net/">
+<meta property="og:image" content="https://starnexa.net/static/screenshot1.png">
+<meta property="og:image:alt" content="StarNexa, an interstellar voyage across a generated galaxy">
+<meta property="og:locale" content="en_US">
 
-        gtag('config', 'UA-107036799-1');
-    </script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="StarNexa — iOS space exploration game">
+<meta name="twitter:description" content="A generated-galaxy space game for iPhone and iPad. Real-time battles. You name the captain and the ship.">
+<meta name="twitter:image" content="https://starnexa.net/static/screenshot1.png">
+<meta name="twitter:image:alt" content="StarNexa game key art">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "StarNexa",
+  "url": "https://starnexa.net/",
+  "description": "An interstellar voyage across a generated galaxy for iPhone and iPad.",
+  "operatingSystem": "iOS",
+  "applicationCategory": "GameApplication",
+  "genre": ["Space simulation", "Action"],
+  "gamePlatform": ["iPhone", "iPad"]
+}
+</script>
 
 
     {% verbatim %}
@@ -187,8 +203,11 @@
 {% endfor %}
 
 
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/quick-panel.module.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/core.module.js"></script>
+<!--KrogothFoundation: /global_static_text/ while STATIC_KROGOTH_MODE is off, /static/compiled/ once it
+    is on. Load order lives in SCRIPT_MANIFEST in krogoth_gantry/krogoth_static_frontend.py-->
+{% for framework_script in krogoth_frontend_scripts %}
+    <script type="text/javascript" src="{{ framework_script }}"></script>
+{% endfor %}
 {#<script src="/moho_extractor/KrogothFoundation/?unique_name=quick-panelmodule"></script>#}
 {#<script src="/moho_extractor/KrogothFoundation/?unique_name=coremodule"></script>#}
 
@@ -198,63 +217,11 @@
 {#    <script src="/moho_extractor/KrogothFoundation/?unique_name={{ com }}"></script>#}
 {#{% endfor %}#}
 
-<!-- KrogothFoundation after compilation -->
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/AKCustom.downloadLargeImageBackground.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/AKCustom.frostedGlassdirective.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/core.config.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/core.exampleCtrlLoadedByInjection.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/core.module.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/core.run.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fil_altDate.filter.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fil_basic.filter.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/filterByIds.filter.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/filterByPropIds.filter.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fuse-config.provider.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fuse-generator.service.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fuse-palettes.constant.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fuse-themes.constant.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fuse-theming.config.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/fuse-theming.service.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/highlight.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-api.provider.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-card.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-datepicker-fix.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-form-wizard.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-info-bar.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-masonry.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-nav.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-navigation.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-responsive-table.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-scroll.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-search-bar.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-sidenav-helper.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-splash-screen.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-stepper.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-timeline.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-utils.service.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/ms-widget.directive.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/srv_api-resolver.service.es6"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/tag.filter.es6"></script>
 
 
 
 
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/chat-tab.controller.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/toolbar.module.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/toolbar.controller.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/navigation.module.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/navigation.controller.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/quick-panel.controller.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/index.module.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/main.controller.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/core.run.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/core.config.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/index.run.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/index.route.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/index.controller.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/index.constants.js"></script>
-<script type="text/javascript" src="/global_static_text/load_static_text_readonly/index.config.js"></script>
-{#<script type="text/javascript" src="/global_static_text/load_static_text_readonly/index.api.js"></script>#}
+{#index.api.js is intentionally not in SCRIPT_MANIFEST#}
 
 
 
@@ -295,11 +262,9 @@
 <link rel="stylesheet" href="/static/jkcarousel/jk-carousel.min.css"/>
 
 
-<link rel="stylesheet" href="/global_static_text/load_static_text_readonly/LoadingScreen.css"/>
-<link rel="stylesheet" href="/global_static_text/load_static_text_readonly/Core.css"/>
-<link rel="stylesheet" href="/global_static_text/load_static_text_readonly/CoreElements.css"/>
-<link rel="stylesheet" href="/global_static_text/load_static_text_readonly/CustomGlobals.css"/>
-<link rel="stylesheet" href="/global_static_text/load_static_text_readonly/Background.css"/>
+{% for framework_style in krogoth_frontend_styles %}
+    <link rel="stylesheet" href="{{ framework_style }}"/>
+{% endfor %}
 
 <link rel="stylesheet" href="/static/fonts/myriad.css"/>
 
